@@ -1,1 +1,108 @@
-ahhaahhhahha
+class Hewan {
+  //kelas itu cetakan, nanti dipanggil di void
+  
+  //kasusnya null safety
+  //String kategori = "Reptil";
+  //String nama= "Ular";
+  //int berat = 28;
+    
+  
+  late String? kategori; //this.kategori
+  late String? nama;
+  late int? berat;
+  //late itu nanti juga ada nilainya di bawah ditambahnya
+  
+  //buat constractor//buat mediator antara class dan void main variable
+  
+  //positional argument = ini harus sesuai urutan namanya
+  
+  //Hewan(this.kategori, this.nama, this.berat){
+  
+   //merujuk ke var hewan1/2/3 kategori, nama, berat, dan harus berurutan
+   //dibuat this semua biar efektif dan cepet
+    //this.kategori = kategori;
+    //this digunakan ketika variablenya itu ada yg sama, nunjukin variabel awal
+    //this.nama = this.nama;
+    //this.berat = this.berat;
+  //}
+  
+  //named arguments = ini gapapa ga sesuai urutan juga
+   Hewan({required this.kategori, this.nama, this.berat});
+   
+   makan(int beratMakanan){
+     berat = berat! + beratMakanan;
+   }
+  
+  
+   pup(int beratPups){
+    berat = berat! - beratPups;
+   }
+   
+  //var hewan2 = Hewan(kategori: "Mamalia", nama: "Kucing",berat: 30); klo untuk named arguments
+  //var hewan2 = Hewan("Mamalia", "Kucing", 30); klo untuk positional arguments
+}
+
+void main(){
+  //ini digunain supaya nanti bisa diolah di constractor
+  
+  print("SEBELUM MAKAN DAN PUP");
+  var hewan1 = Hewan(kategori : "Reptil", nama : "Ular", berat : 20);
+  
+  //tadinya gini
+  //var hewan1 = Hewan();
+  
+  print(hewan1);
+  //tipe data berupa object si hewan
+  //instance of Hewan : tipe data hewan1 itu adalah object dari kelas hewan
+  
+  print(hewan1.nama);
+  //nanti ngeprint fungsi hewan1 dan nama hewannya apa 
+  //output: ular
+  
+  print("Kategori: ${hewan1.kategori}");
+  print("Berat: ${hewan1.berat} KG");
+  //string interpolation 
+  //String interpolation adalah teknik yang digunakan dalam Dart untuk memasukkan nilai variabel atau ekspresi ke dalam string. Dart mendukung dua jenis string interpolation: menggunakan tanda kurung kurawal {} dan $.
+  
+  
+  print("SESUDAH MAKAN");
+  
+  hewan1.makan(5);
+  print(hewan1.nama);
+  print("Kategori: ${hewan1.kategori}");
+  print("Berat: ${hewan1.berat}KG");
+  
+  print("SESUDAH PUP");
+  
+  hewan1.nama = "Orangutansss";
+  //bisa diubah-ubah namanya sesuai kondisi
+  hewan1.pup(10);
+  print(hewan1.nama);
+  print("Kategori: ${hewan1.kategori}");
+  print("Berat: ${hewan1.berat}KG");
+  
+  print("----------");
+  
+  var hewan2 = Hewan(kategori: "Mamalia", nama: "Kucing",berat: 30);
+  print(hewan2);
+  print(hewan2.nama);
+  print("Kategori: ${hewan2.kategori}");
+  print("Berat: ${hewan2.berat} KG");
+  
+  print("----------");
+  
+  //awalnya
+  //var hewan3 = Hewan(kategori: "Pisces", nama: "Nemo",berat: 30);
+  //mau diganti
+  //hewan3.nama = emongs;
+  //hewan3.berat = 112;
+  
+  //cascade notation
+  var hewan3 = Hewan(berat : 1, kategori: "Pisces")..nama = "emongs"..berat = 112;
+  
+  
+  print(hewan3);
+  print(hewan3.nama);
+  print("Kategori: ${hewan3.kategori}");
+  print("Berat: ${hewan3.berat} KG");
+}
